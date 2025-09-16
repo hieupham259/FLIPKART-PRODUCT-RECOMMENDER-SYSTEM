@@ -1,22 +1,23 @@
 from langchain_groq import ChatGroq
 from langchain.chains import create_history_aware_retriever, create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain_core.runnables.history import RunnableWithMessageHistory
+from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_core.prompts import ChatPromptTemplate,MessagesPlaceholder
-from langchain_core.runnables.history import RunnableWithMessageHistory
 
-from config import Config
+from flipkart.config import Config
 
 
 class RAGChainBuilder:
     def __init__(self, vector_store):
         self.vector_store = vector_store
-        self.model = ChatGroq(model=Config.CHAT_GROQ_MODEL, temperature=0.5)
+        self.model = ChatGroq(model=Config.RAG_MODEL, temperature=0.5)
         self.history_store = {}
 
     def _get_history(self, session_id:str) -> BaseChatMessageHistory:
         if session_id not in self.history_store:
-            self.history_store[session_id] = BaseChatMessageHistory()
+            self.history_store[session_id] = ChatMessageHistory()
         return self.history_store[session_id]
     
     def build_chain(self):
