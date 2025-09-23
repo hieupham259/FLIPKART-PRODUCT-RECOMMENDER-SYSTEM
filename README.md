@@ -195,10 +195,10 @@ kubectl apply -f prometheus/prometheus-deployment.yaml
 kubectl apply -f grafana/grafana-deployment.yaml
 
 ## Check target health also..
-## On IP:9090
+## On IP:9090 terminal 2
 kubectl port-forward --address 0.0.0.0 svc/prometheus-service -n monitoring 9090:9090
 
-## Username:Pass --> admin:admin
+## Username:Pass --> admin:admin terminal 3
 kubectl port-forward --address 0.0.0.0 svc/grafana-service -n monitoring 3000:3000
 
 
