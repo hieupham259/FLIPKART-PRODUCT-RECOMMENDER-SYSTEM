@@ -3,7 +3,6 @@ from langchain_core.documents import Document
 from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain.chains.combine_documents import create_stuff_documents_chain
-from langchain_groq import ChatGroq
 
 # Initialize the language model
 from flipkart.config import Config
