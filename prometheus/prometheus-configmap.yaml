@@ -16,4 +16,4 @@ data:
 
         - job_name: 'flask-app'
           static_configs:
-              - targets: ['34.42.228.136:5000']
+              - targets: ['34.27.187.250:5000']
